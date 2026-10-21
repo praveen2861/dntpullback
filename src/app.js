@@ -26,3 +26,24 @@ const copes = [
 let copeIndex = 0;
 document.querySelector('#cope').addEventListener('click', () => { document.querySelector('#cope-text').textContent = copes[copeIndex++ % copes.length]; });
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+const copyButton = document.querySelector('#copy-ca');
+let copyReset;
+copyButton.addEventListener('click', async () => {
+  const status = document.querySelector('#copy-status');
+  clearTimeout(copyReset);
+  try {
+    await navigator.clipboard.writeText(document.querySelector('#contract-address').textContent.trim());
+    copyButton.textContent = 'COPIED ✓';
+    status.textContent = 'Contract address copied.';
+  } catch {
+    copyButton.textContent = 'SELECT CA';
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(document.querySelector('#contract-address'));
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = 'Copy unavailable. Address selected; copy it manually.';
+  }
+  copyReset = setTimeout(() => { copyButton.textContent = 'COPY CA'; status.textContent = ''; }, 4000);
+});

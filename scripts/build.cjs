@@ -14,6 +14,7 @@ for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
   if (!fs.statSync(path.join(source, asset)).isFile()) throw new Error(`Missing asset: ${asset}`);
 }
 fs.mkdirSync(output, { recursive: true });
+fs.cpSync(path.join(source, 'assets'), path.join(output, 'assets'), { recursive: true });
 for (const file of ['index.html', 'style.css', 'app.js']) {
   fs.copyFileSync(path.join(source, file), path.join(output, file));
 }
