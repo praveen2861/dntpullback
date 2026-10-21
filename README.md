@@ -21,6 +21,10 @@ Open http://127.0.0.1:4173. Set `PORT` and optionally `HOST` to change the serve
 - For static hosting, use `npm run build` as the build command and `dist` as the output directory.
 - The optional Node preview server serves `dist/`.
 
+### Vercel
+
+The committed `vercel.json` selects the Other framework preset, runs `npm run build`, and publishes `dist/` as static files. The preview server lives in `scripts/serve.cjs` to avoid detection as a production Node application. No serverless function is needed.
+
 Fonts load from Google Fonts; system fallback fonts are provided. All interactions run locally in the visitor's browser. The chart is an illustration, and the site has no wallet connection, transactions, or live market data.
 
 This project is unaffiliated with Pullback. The original project is https://pullback.cards/.

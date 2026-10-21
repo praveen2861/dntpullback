@@ -1,7 +1,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
-const root = path.join(__dirname, 'dist');
+const root = path.join(__dirname, '..', 'dist');
 http.createServer((req,res) => {
   const name = new URL(req.url, 'http://localhost').pathname;
   const files = {'/':'index.html','/index.html':'index.html','/style.css':'style.css','/app.js':'app.js'};

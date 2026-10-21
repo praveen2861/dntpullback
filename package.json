@@ -5,8 +5,8 @@
   "description": "An unofficial, sarcastic Pullback holder prayer room.",
   "scripts": {
     "build": "node scripts/build.cjs",
-    "start": "node server.cjs",
-    "check": "node --check src/app.js && node --check server.cjs && node --check scripts/build.cjs"
+    "start": "node scripts/serve.cjs",
+    "check": "node --check src/app.js && node --check scripts/serve.cjs && node --check scripts/build.cjs"
   },
   "engines": { "node": ">=20" }
 }
